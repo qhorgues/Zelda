@@ -18,7 +18,7 @@ namespace
     constexpr int HEIGHT_LINK_SPRITE {27};
 };
 
-int main()
+int main(int, char **)
 {
     try
     {
