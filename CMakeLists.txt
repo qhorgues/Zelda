@@ -15,7 +15,7 @@ set (SRCS
 )
 
 set (HEADERS
-    
+    src/Graphics/Main_Interface/Main_Interface_S.hpp
 )
 
 set (ASSETS
@@ -25,12 +25,10 @@ set (ASSETS
 if (MINGW)
     set (CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
-    if (${CMAKE_BUILD_TYPE} MATCHES "Debug" OR ${CMAKE_BUILD_TYPE} MATCHES "RelWithDebInfo")
+    if (${CMAKE_BUILD_TYPE} MATCHES "Release" OR ${CMAKE_BUILD_TYPE} MATCHES "MinSizeRel")
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -mwindows")
     endif()
 endif (MINGW)
-
-message(STATUS "${CMAKE_MODULE_PATH}")
 
 find_package(SDL2pp REQUIRED)
 
