@@ -15,6 +15,8 @@ set (SRCS
 )
 
 set (HEADERS
+    src/Coord.hpp
+    src/GameStatus.hpp
     src/Graphics/Main_Interface/Main_Interface_S.hpp
 )
 
