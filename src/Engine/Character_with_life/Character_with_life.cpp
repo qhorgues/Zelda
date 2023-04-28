@@ -3,18 +3,18 @@
 
 namespace Engine
 {
-    Character_with_life::Character_with_life(int max_life)
+    Character_with_life::Character_with_life(double max_life) noexcept
         : m_max_life(max_life), m_life(max_life)
     {
         assert(max_life > 0 && "Life is necessarily positive");
     }
 
-    void Character_with_life::full_regeneration(void) noexcept
+    constexpr void Character_with_life::full_regeneration(void) noexcept
     {
         m_life = m_max_life;
     }
 
-    void Character_with_life::regeneration(int life_point) noexcept
+    void Character_with_life::regeneration(double life_point) noexcept
     {
         assert(life_point >= 0 && "Life point is necessarily positive or zero");
 
@@ -28,15 +28,27 @@ namespace Engine
         }
     }
 
-    void Character_with_life::add_more_max_life(int more_max_life) noexcept
+    void Character_with_life::add_more_max_life(double more_max_life) noexcept
     {
         assert(more_max_life >= 0 && "\'more life\' is necessarily positive or zero");
 
         m_max_life += more_max_life;
     }
 
-    int Character_with_life::get_life(void) noexcept
+    double Character_with_life::get_life(void) const noexcept
     {
         return m_life;
+    }
+
+    void Character_with_life::degat(double attack_value) noexcept
+    {
+        if (attack_value >= m_life)
+        {
+            m_life = 0;
+        }
+        else
+        {
+            m_life -= attack_value;
+        }
     }
 }

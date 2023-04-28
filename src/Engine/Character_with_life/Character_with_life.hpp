@@ -3,11 +3,13 @@
 
 namespace Engine
 {
+    class Character_with_attack;
+
     class Character_with_life
     {
     public:
         Character_with_life() = delete;
-        Character_with_life(int max_life);
+        explicit Character_with_life(double max_life) noexcept;
 
         Character_with_life(Character_with_life const &) = delete;
         Character_with_life &operator=(Character_with_life const &) = delete;
@@ -15,16 +17,19 @@ namespace Engine
         Character_with_life(Character_with_life &&) = delete;
         Character_with_life &operator=(Character_with_life &&) = delete;
 
-        void full_regeneration(void) noexcept;
-        void regeneration(int life_point) noexcept;
-        void add_more_max_life(int more_max_life) noexcept;
-        int get_life(void) noexcept;
+        constexpr void full_regeneration(void) noexcept;
+        void regeneration(double life_point) noexcept;
+        void add_more_max_life(double more_max_life) noexcept;
+        double get_life(void) const noexcept;
 
-        ~Character_with_life() = default;
+        constexpr virtual ~Character_with_life() = default;
 
+        friend Character_with_attack;
+        
     private:
-        int m_max_life;
-        int m_life;
+        void degat(double attack_value) noexcept;
+        double m_max_life;
+        double m_life;
     };
 }
 
