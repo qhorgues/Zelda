@@ -1,30 +1,22 @@
-#ifndef CHARACTER_HPP
-#define CHARACTER_HPP
+#ifndef NON_MOVABLE_CHARACTER_HPP
+#define NON_MOVABLE_CHARACTER_HPP
 
-#include "../../Coord.hpp"
-#include <tuple>
+#include "../Character/Character.hpp"
 
 namespace Engine
 {
-    class Non_Movable_Character
+    class Non_Movable_Character : public __private::Character
     {
     public:
+        using __private::Character::Character;
         Non_Movable_Character() = delete;
-        Non_Movable_Character(int x, int y) noexcept;
-        Non_Movable_Character(Coord coord) noexcept;
+        constexpr virtual ~Non_Movable_Character() = default;
 
         Non_Movable_Character(Non_Movable_Character const &) = delete;
         Non_Movable_Character &operator=(Non_Movable_Character const &) = delete;
 
         Non_Movable_Character(Non_Movable_Character &&) = delete;
         Non_Movable_Character &operator=(Non_Movable_Character &&) = delete;
-
-        ~Non_Movable_Character() = default;
-
-        std::tuple<int, int> get_position();
-
-    private:
-        Coord m_coord;
     };
 }
 

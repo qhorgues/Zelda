@@ -3,15 +3,16 @@
 
 #include <tuple>
 #include "../../Coord.hpp"
+#include "../Character/Character.hpp"
 
 namespace Engine
 {
-    class Movable_Character
+    class Movable_Character : public __private::Character
     {
     public:
         Movable_Character() = delete;
-        Movable_Character(int x, int y, double velocity) noexcept;
-        Movable_Character(Coord coord, double velocity) noexcept;
+        explicit Movable_Character(int x, int y, double velocity) noexcept;
+        explicit Movable_Character(Coord<int> coord, double velocity) noexcept;
 
         Movable_Character(Movable_Character const &) = delete;
         Movable_Character &operator=(Movable_Character const &) = delete;
@@ -29,13 +30,11 @@ namespace Engine
         };
 
         void move(Direction direction, double delta_time = 1.) noexcept;
-        std::tuple<int, int> get_position();
 
-        ~Movable_Character() = default;
+        constexpr virtual ~Movable_Character() = default;
 
     private:
         double m_velocity;
-        Coord m_coord;
     };
 };
 

@@ -12,17 +12,21 @@ set_choice (CMAKE_BUILD_TYPE "Debug;Release;MinSizeRel;RelWithDebInfo" "Debug" "
 
 set (SRCS
 	src/main.cpp
+    src/Engine/Character/Character.cpp
     src/Engine/Character_with_life/Character_with_life.cpp
     src/Engine/Movable_Character/Movable_Character.cpp
-    src/Engine/Non_Movable_Character/Non_Movable_Character.cpp
+    src/Engine/Character_with_attack/Character_with_attack.cpp
 )
 
 set (HEADERS
     src/Coord.hpp
     src/GameStatus.hpp
+    src/Engine/Engine.hpp
+    src/Engine/Character/Character.hpp
     src/Engine/Character_with_life/Character_with_life.hpp
     src/Engine/Movable_Character/Movable_Character.hpp
     src/Engine/Non_Movable_Character/Non_Movable_Character.hpp
+    src/Engine/Character_with_attack/Character_with_attack.hpp
 )
 
 set (ASSETS
